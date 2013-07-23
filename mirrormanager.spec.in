@@ -48,6 +48,7 @@ The MirrorManager map generator creates a world map PNG noting public mirrors.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+make prep
 make install DESTDIR=$RPM_BUILD_ROOT CONFFILE="%{_sysconfdir}/%{name}/prod.cfg" PROGRAMDIR="%{_datadir}/%{name}/server" SBINDIR="%{_sbindir}"
 
 
@@ -97,6 +98,13 @@ exit 0
 %doc LICENSES LICENSE-GPLv2
 
 %changelog
+* Tue Jul 23 2013 Dmitry Tikhonov <squall.sama@gmail.com> - 1.4.1-1
+- fix postgresql bug in model.py
+- fix double datetime in update-master-directory-list
+- fix stderr when call run_rsync in crawler_perhost
+- spec: fix python .egg files - add meke prep in prep section
+- backport master.kid and welcome.kid
+
 * Mon Jun 17 2013 Matt Domsch <mdomsch@fedoraproject.org> - 1.4.1-1
 - upstream 1.4.1 pure bugfix release
 
